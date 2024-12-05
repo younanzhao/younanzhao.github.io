@@ -36,7 +36,30 @@ I use a bagged RF algorithm to extrapolate the gridded PSD BV and slope at both 
 
 (Here is an overview of the dataset, how it was obtained and the preprocessing steps taken, with some plots!)
 
-
+```markdown
+<table>
+  <tr>
+    <th>Tables</th>
+    <th>Are</th>
+    <th>Cool</th>
+  </tr>
+  <tr>
+    <td>col 1 is</td>
+    <td>left-aligned</td>
+    <td>$1600</td>
+  </tr>
+  <tr>
+    <td>col 2 is</td>
+    <td>centered</td>
+    <td>$12</td>
+  </tr>
+  <tr>
+    <td>col 3 is</td>
+    <td>right-aligned</td>
+    <td>$1</td>
+  </tr>
+</table>
+```
 |Feature Category|Feature|Dimensions|Sources|
 |Universal|Temperature|360$\times$180|WOA 18|
 
