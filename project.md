@@ -1,6 +1,6 @@
 ## My Project
 
-I applied machine learning techniques to investigate global particle size distributions. Briefly, I reconstructed the global PSDs data by applying a bagged Random Forest [RF] algorithm to a global data set of UVP5 (Underwater Vision Profiler) observations.
+I applied machine learning techniques to investigate global particle size distributions (PSDs). Briefly, I reconstructed the global PSDs data by applying a bagged Random Forest (RF) algorithm to a global data set of UVP5 (Underwater Vision Profiler) observations.
 
 Below is my report.
 
@@ -23,11 +23,20 @@ Here, I present an analysis of particle size distributions (PSDs) from a global 
 
 
 
-The Random Forest algorithm is an example of supervised learning that employs labeled data to teach how to categorize unlabeled data.
+The Random Forest (RF) algorithm is an example of supervised learning that employs labeled data to teach how to categorize unlabeled data.
+
+
+
+
+
+I use a bagged RF algorithm to extrapolate the gridded PSD BV and slope at both the euphotic zone and mixed layer depth horizons, based on monthly climatological predictors that include temperature, salinity, silicate, depth, shortwave radiation and other biogeochemical variables such as oxygen, nutrients, chlorophyll, mixed layer depth, net primary production (NPP), euphotic depth, and iron deposition. These predictors can make sure that the model captures both static and denamic aspects of PSD, improving the robustness adn accuracy of the resulting reconstructions.
+
 
 ## Data
 
 (Here is an overview of the dataset, how it was obtained and the preprocessing steps taken, with some plots!)
+
+
 
 ![](assets/IMG/datapenguin.png){: width="500" }
 
@@ -39,14 +48,14 @@ The Random Forest algorithm is an example of supervised learning that employs la
 
 (The model might involve optimizing some quantity. You can include snippets of code if it is helpful to explain things.)
 
-(```python
+```python
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.datasets import make_classification
 X, y = make_classification(n_features=4, random_state=0)
 clf = ExtraTreesClassifier(n_estimators=100, random_state=0)
 clf.fit(X, y)
 clf.predict([[0, 0, 0, 0]])
-```)
+```
 
 (This is how the method was developed.)
 
