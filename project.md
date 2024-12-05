@@ -40,7 +40,11 @@ The original BioVolume and Slope data are from EcoPart, where the data are colle
 
 ![](assets/IMG/plot1.png)
 
+*Figure 1: The original BioVolume data*
+
 ![](assets/IMG/plot2.png)
+
+*Figure 2: The original Slope data*
 
 The predictors are collected from various datasets:
 <table>
@@ -184,8 +188,8 @@ The predictors are collected from various datasets:
   </tr>
 </table>
 
+For temperature, salinity, silicate, oxygen, and nutrients, we will also consider both their temporal and vertical changes as parts of predictors; for shortwave radiation, chlorophyll, NPP, mixed layer depth, euphotic depth, and iron deposition, which remain the same at different depth, just consider their temporal changes.
 
-(*Figure 1: Here is a caption for my diagram. This one shows a pengiun [1].*)
 
 ## Modelling
 
