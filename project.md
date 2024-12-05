@@ -36,7 +36,13 @@ I use a bagged RF algorithm to extrapolate the gridded PSD BV and slope at both 
 
 (Here is an overview of the dataset, how it was obtained and the preprocessing steps taken, with some plots!)
 
+The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The data is binned on a regular 1° resolution global grid. Taking 200m depth (which is usually considered as a threshold for mixed layer or euphotic layer) as an example, the plots of the original data are as follows: 
 
+![](assets/IMG/plot1.png)
+
+![](assets/IMG/plot2.png)
+
+The predictors are collected from various datasets:
 <table>
   <tr>
     <th>Feature Category</th>
@@ -177,12 +183,7 @@ I use a bagged RF algorithm to extrapolate the gridded PSD BV and slope at both 
     <td>Hamilton et al. (2019) </td>
   </tr>
 </table>
-$
 
-
-![](assets/IMG/plot1.png)
-
-![](assets/IMG/plot2.png)
 
 (*Figure 1: Here is a caption for my diagram. This one shows a pengiun [1].*)
 
