@@ -1,6 +1,8 @@
 ## My Project
 
-I applied machine learning techniques to investigate global particle size distributions. Below is my report.
+I applied machine learning techniques to investigate global particle size distributions. Briefly, I reconstructed the global PSDs data by applying a bagged Random Forest [RF] algorithm to a global data set of UVP5 (Underwater Vision Profiler) observations.
+
+Below is my report.
 
 ***
 
@@ -11,8 +13,6 @@ I applied machine learning techniques to investigate global particle size distri
 Export of sinking particles from the surface ocean is critical for carbon sequestration and to provide energy to the deep biosphere. The magnitude and spatial patterns of this export have been estimated in the past by in situ particle flux observations, satellite-based algorithms, and ocean biogeochemical models; however, these estimates remain uncertain.
 
 Here, I present an analysis of particle size distributions (PSDs) from a global compilation of in situ Underwater Vision Profiler 5 (UVP5) optical measurements. Using a machine learning algorithm, I extrapolate sparse UVP5 observations to the global ocean from well-sampled oceanographic variables. I reconstruct global maps of PSD parameters (biovolume [BV] and slope) for particles at the base of the euphotic zone. These reconstructions reveal consistent global patterns, with high chlorophyll regions generally characterized by high particle BV and flatter PSD slope, that is, a high relative abundance of large versus small particles.
-
-
 
 
 
