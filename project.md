@@ -1,6 +1,6 @@
 ## My Project
 
-I applied machine learning techniques to investigate... Below is my report.
+I applied machine learning techniques to investigate global particle size distributions. Below is my report.
 
 ***
 
