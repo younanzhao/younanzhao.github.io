@@ -16,11 +16,14 @@ Here, I present an analysis of particle size distributions (PSDs) from a global 
 
 
 
-
-
 (There is some dataset that we can use to help solve this problem. This allows a machine learning approach. This is how I will solve the problem using supervised/unsupervised/reinforcement/etc. machine learning.)
 
 (We did this to solve the problem. We concluded that...)
+
+
+
+
+The Random Forest algorithm is an example of supervised learning that employs labeled data to teach how to categorize unlabeled data.
 
 ## Data
 
