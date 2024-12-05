@@ -36,7 +36,7 @@ I use a bagged RF algorithm to extrapolate the gridded PSD BV and slope at both 
 
 (Here is an overview of the dataset, how it was obtained and the preprocessing steps taken, with some plots!)
 
-The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The data is binned on a regular 1° resolution global grid. Taking 200m depth (which is usually considered as a threshold for mixed layer or euphotic layer) as an example, the plots of the original data are as follows: 
+The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The data is binned on a regular 1° resolution global grid. Taking 200m depth (which is usually considered as a threshold for mixed layer or euphotic layer) as an example, the plots of seasonal mean of the original data are as follows: 
 
 ![](assets/IMG/plot1.png)
 
@@ -201,19 +201,81 @@ For temperature, salinity, silicate, oxygen, and nutrients, we will also conside
 (The model might involve optimizing some quantity. You can include snippets of code if it is helpful to explain things.)
 
 ```python
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.datasets import make_classification
-X, y = make_classification(n_features=4, random_state=0)
-clf = ExtraTreesClassifier(n_estimators=100, random_state=0)
-clf.fit(X, y)
-clf.predict([[0, 0, 0, 0]])
+from sklearn.ensemble import RandomForestRegressor
+
+# RandomForestRegressor
+
+model = RandomForestRegressor(random_state=0, oob_score=True)
+
+
+pred_bv = []
+pred_sp = []
+
+preds = np.column_stack((predictors_ddepth.flatten(),
+                         predictors_temp.flatten(),predictors_temp_ddd.flatten(),predictors_temp_ddt.flatten(),
+                         predictors_salt.flatten(),predictors_salt_ddd.flatten(),predictors_salt_ddt.flatten(),
+                         predictors_si.flatten(),predictors_si_ddd.flatten(),predictors_si_ddt.flatten(),
+                         predictors_shwv.flatten(),predictors_shwv_ddt.flatten(),
+                         predictors_oxy.flatten(),predictors_oxy_ddd.flatten(),predictors_oxy_ddt.flatten(),
+                         predictors_nut.flatten(),predictors_nut_ddd.flatten(),predictors_nut_ddt.flatten(),
+                         predictors_chl.flatten(),predictors_chl_ddt.flatten(),
+                         predictors_npp.flatten(),predictors_npp_ddt.flatten(),
+                         predictors_mld.flatten(),predictors_mld_ddt.flatten(),
+                         predictors_irn.flatten(),predictors_irn_ddt.flatten(),
+                         predictors_zeu.flatten(),predictors_zeu_ddt.flatten(),))
+
+x = preds
+X = preds
+y = np.column_stack((biov_data.flatten(), slope_data.flatten()))
+
+# Remove rows with NaN values
+idrem = np.unique(np.concatenate([np.where(np.isnan(np.mean(y, axis=1)))[0], np.where(np.isnan(np.mean(x, axis=1)))[0]]))
+x = np.delete(x, idrem, axis=0)
+y = np.delete(y, idrem, axis=0)
+
+model.fit(x, y)
+
+yhat = model.predict(x)
+y_oob = model.oob_prediction_
+
+mask = np.mean(X, axis=1)
+mask[~np.isnan(mask)] = 1
+mask[np.isnan(mask)] = 0
+
+X[np.isnan(X)] = 0
+y_recon = model.predict(X)
+y_recon = y_recon * mask[:, np.newaxis]
+
+# Reshape for geographical grid
+
+pred_bv = y_recon[:, 0].reshape(12,102,180,360)
+pred_sp = y_recon[:, 1].reshape(12,102,180,360)
+
+# Apply topographic mask
+pred_bv *= tp_msk
+pred_sp *= tp_msk
 ```
 
 (This is how the method was developed.)
 
 ## Results
 
+The reconstructed seasonal mean BioVolume and Slope data at 200m depth are as follows:
 (Figure X shows... [description of Figure X].)
+
+![](assets/IMG/plot3.png)
+
+*Figure 3: The reconstructed BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1, and 1 on the plot means a biovolume of 10.*
+
+
+
+
+![](assets/IMG/plot4.png)
+
+*Figure 4: The reconstructed Slope data. It is unitless.*
+
+
+
 
 ## Discussion
 
