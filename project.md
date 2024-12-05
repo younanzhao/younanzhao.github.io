@@ -42,9 +42,12 @@ The original BioVolume and Slope data are from EcoPart, where the data are colle
 
 *Figure 1: The original BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1, and 1 on the plot means a biovolume of 10.*
 
+
+
+
 ![](assets/IMG/plot2.png)
 
-*Figure 2: The original Slope data. It is unitless. *
+*Figure 2: The original Slope data. It is unitless.*
 
 The predictors are collected from various datasets:
 <table>
