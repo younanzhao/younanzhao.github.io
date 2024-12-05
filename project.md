@@ -47,25 +47,138 @@ I use a bagged RF algorithm to extrapolate the gridded PSD BV and slope at both 
   <tr>
     <td>Universal</td>
     <td>Temperature</td>
-    <td>360 $\times$ 180</td>
+    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
     <td>WOA 18</td>
   </tr>
   <tr>
-    <td>col 2 is</td>
-    <td>centered</td>
-    <td>$12</td>
-    <td></td>
+    <td> </td>
+    <td>Salinity</td>
+    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>WOA 18</td>
   </tr>
   <tr>
-    <td>col 3 is</td>
-    <td>right-aligned</td>
-    <td>$1</td>
-    <td></td>
+    <td> </td>
+    <td>Silicate</td>
+    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>WOA 18</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>Depth</td>
+    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>WOA 18</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>Shortwave Radiation</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>ERA 5</td>
+  </tr>
+  <tr>
+    <td>Oxygen</td>
+    <td>Oxygen</td>
+    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>WOA 18</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>AOU</td>
+    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>WOA 18</td>
+  </tr>
+  <tr>
+    <td>Nutrients</td>
+    <td>Nitrate</td>
+    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>WOA 18</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>Phosphate</td>
+    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>WOA 18</td>
+  </tr>
+  <tr>
+    <td>CHL</td>
+    <td>Merged Chlorophyll</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>GlobColour</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>Modis Chlorophyll</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>NASA G.S.F.C.</td>
+  </tr>
+  <tr>
+    <td>MLD</td>
+    <td>Mixed Layer Depth I</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>MIMOC</td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>Mixed Layer Depth II</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td> de Boyer Montegut et al. (2004) </td>
+  </tr>
+  <tr>
+    <td>NPP</td>
+    <td>Eppley VGPM</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>Antoine and Morel (1996) </td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>VGPM</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>Behrenfeld and Falkowski (1997) </td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>CBPM</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>Westberry et al. (2008) </td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>CAFE</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>Silsbe et al. (2016) </td>
+  </tr>
+  <tr>
+    <td>Euphotic Depth </td>
+    <td>Eppley VGPM Euphotic depth</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>Morel et al. (2007) </td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>VGPM Euphotic depth</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>Morel et al. (2007) </td>
+  </tr>
+  <tr>
+    <td>  </td>
+    <td>CBPM Euphotic depth</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>Morel et al. (2007) </td>
+  </tr>
+  <tr>
+    <td>Iron Deposition </td>
+    <td>ELabile Fraction</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>Myriokefalitakis et al. (2018) </td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td>Soluble Fraction</td>
+    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>Hamilton et al. (2019) </td>
   </tr>
 </table>
 $
-|Feature Category|Feature|Dimensions|Sources|
-|Universal|Temperature|360$\times$180|WOA 18|
+
 
 ![](assets/IMG/plot1.png)
 
