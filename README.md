@@ -199,7 +199,7 @@ The predictors are collected from various datasets based on the choice in Clemen
 
 For temperature, salinity, silicate, oxygen, and nutrients, we will also consider both their temporal and vertical changes as parts of predictors; for shortwave radiation, chlorophyll, NPP, mixed layer depth, euphotic depth, and iron deposition, which remain the same at different depth, just consider their temporal changes.
 
-(Link to datasets)
+Full dataset please see: [Data](https://github.com/younanzhao/younanzhao.github.io/tree/main/assets/Data).
 
 ## Modelling
 
@@ -287,7 +287,7 @@ pred_bv *= tp_msk
 pred_sp *= tp_msk
 ```
 
-Full code please see: [Code](https://github.com/younanzhao/younanzhao.github.io/tree/main/assets/Code))
+Full code please see: [Code](https://github.com/younanzhao/younanzhao.github.io/tree/main/assets/Code).
 
 ## Results
 
