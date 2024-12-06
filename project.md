@@ -35,7 +35,7 @@ The original BioVolume and Slope data are from EcoPart, where the data are colle
 
 *Figure 2: The original Slope data. It is unitless.*
 
-The predictors are collected from various datasets:
+The predictors are collected from various datasets based on the choice in Clements et al. (2022):
 <table>
   <tr>
     <th>Feature Category</th>
@@ -281,15 +281,21 @@ The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as fo
 
 ## Discussion
 
+In section "Modeling", it is discussed that the benefit of bagging random forest algorithm is that we can use the left-out data points in each bootstrapped sample to make OOB predictions. The OOB predictions can effectively serve as a validation set, so we can assess model performance without needing a separate validation dataset.
+
 (From Figure X, one can see that... [interpretation of Figure X].)
 
 ![](assets/IMG/plot5.png)
+*Figure 5: Performance of the Random Forest reconstruction shown as density scatter plots of predicted versus observed BV (colors indicate the normalized density of observations at each point).*
 
 ![](assets/IMG/plot6.png)
+*Figure 6: Same as figure 5, but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
 
 ![](assets/IMG/plot7.png)
+*Figure 7: Performance of the Random Forest reconstruction shown as density scatter plots of predicted versus observed particulate slope (colors indicate the normalized density of observations at each point).*
 
 ![](assets/IMG/plot8.png)
+*Figure 8: Same as figure 7,but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
 
 
 ## Conclusion
@@ -299,6 +305,8 @@ The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as fo
 * second conclusion
 
 (Here is how this work could be developed further in a future project.)
+
+In future projects, I would further do research into the main predictors and decide which predictors are the most important factors that affect particle size distributions.
 
 ## References
 [1] DALL-E 3
