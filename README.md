@@ -1,6 +1,6 @@
-## My Project
+## Global reconstructions of particle size distribution from UVP5 observations using bagging random forest algorithm
 
-I applied machine learning techniques to investigate global particle size distributions (PSDs). Briefly, I reconstructed the global PSDs data by applying a bagged Random Forest (RF) algorithm to a global data set of UVP5 (Underwater Vision Profiler) observations.
+I applied machine learning techniques to investigate global particle size distributions (PSDs) data. Briefly, I reconstructed the BioVolume and Slope data by applying a bagged Random Forest (RF) algorithm to a global data set of UVP5 (Underwater Vision Profiler) observations.
 
 Below is my report.
 
