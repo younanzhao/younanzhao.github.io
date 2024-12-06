@@ -1,3 +1,17 @@
+<head>
+ <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+ <script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+ tex2jax: {
+ skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+ inlineMath: [['$','$']]
+ }
+ });
+ </script>
+</head>
+
+
+
 ## Global reconstructions of particle size distribution from UVP5 observations using bagging random forest algorithm
 
 I applied machine learning techniques to investigate global particle size distributions (PSDs) data. Briefly, I reconstructed the BioVolume and Slope data by applying a bagged Random Forest (RF) algorithm to a global data set of UVP5 (Underwater Vision Profiler) observations. Below is my report.
