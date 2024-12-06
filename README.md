@@ -26,9 +26,7 @@ The original BioVolume and Slope data are from EcoPart, where the data are colle
 
 PSD is modeled as:
 
-```markdown
 $n(s) = n_0 \times s^{-\beta}$
-```
 
 where s is the equivalent spherical diameter or size of the particle (in units of 𝜇m), and n(s) is the abundance of particles (units of m-3 𝜇m-1) in a vanishingly small size interval [s, s + ds]. n0 is the intercepth and β is the slope. So Biovolume is given by:
 
