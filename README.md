@@ -22,13 +22,14 @@ I concluded that ...
 
 (Here is an overview of the dataset, how it was obtained and the preprocessing steps taken, with some plots!)
 
-The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The data is binned on a regular 1° resolution global grid. Taking 100m depth (which is usually considered as a threshold for mixed layer or euphotic layer) as an example, the plots of seasonal mean of the original data are as follows: 
+The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The UVP instrument captures images of particles within a control volume as it is lowered in the water column, providing counts of particles with sizes ranging from different diameters. The UVP quantifies the abundance of particulate matter into size classes (bins), allowing to determine PSD as a function of depth.
+
+
+The PSDs data is binned on a regular 1° resolution global grid. Taking 100m depth (which is usually considered as a threshold for mixed layer or euphotic layer) as an example, the plots of seasonal mean of the original data are as follows: 
 
 ![](assets/IMG/plot1.png)
 
 *Figure 1: The original BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm.*
-
-
 
 
 ![](assets/IMG/plot2.png)
@@ -46,133 +47,133 @@ The predictors are collected from various datasets based on the choice in Clemen
   <tr>
     <td>Universal</td>
     <td>Temperature</td>
-    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 102 × 180 × 360 </td>
     <td>WOA 18</td>
   </tr>
   <tr>
     <td> </td>
     <td>Salinity</td>
-    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 102 × 180 × 360 </td>
     <td>WOA 18</td>
   </tr>
   <tr>
     <td> </td>
     <td>Silicate</td>
-    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 102 × 180 × 360 </td>
     <td>WOA 18</td>
   </tr>
   <tr>
     <td> </td>
     <td>Depth</td>
-    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 102 × 180 × 360 </td>
     <td>WOA 18</td>
   </tr>
   <tr>
     <td> </td>
     <td>Shortwave Radiation</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>ERA 5</td>
   </tr>
   <tr>
     <td>Oxygen</td>
     <td>Oxygen</td>
-    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 102 × 180 × 360 </td>
     <td>WOA 18</td>
   </tr>
   <tr>
     <td> </td>
     <td>AOU</td>
-    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 102 × 180 × 360 </td>
     <td>WOA 18</td>
   </tr>
   <tr>
     <td>Nutrients</td>
     <td>Nitrate</td>
-    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 102 × 180 × 360 </td>
     <td>WOA 18</td>
   </tr>
   <tr>
     <td> </td>
     <td>Phosphate</td>
-    <td>12 $\times$ 102 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 102 × 180 × 360 </td>
     <td>WOA 18</td>
   </tr>
   <tr>
     <td>CHL</td>
     <td>Merged Chlorophyll</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>GlobColour</td>
   </tr>
   <tr>
     <td> </td>
     <td>Modis Chlorophyll</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>NASA G.S.F.C.</td>
   </tr>
   <tr>
     <td>MLD</td>
     <td>Mixed Layer Depth I</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>MIMOC</td>
   </tr>
   <tr>
     <td> </td>
     <td>Mixed Layer Depth II</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td> de Boyer Montegut et al. (2004) </td>
   </tr>
   <tr>
     <td>NPP</td>
     <td>Eppley VGPM</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>Antoine and Morel (1996) </td>
   </tr>
   <tr>
     <td> </td>
     <td>VGPM</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>Behrenfeld and Falkowski (1997) </td>
   </tr>
   <tr>
     <td> </td>
     <td>CBPM</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>Westberry et al. (2008) </td>
   </tr>
   <tr>
     <td> </td>
     <td>CAFE</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>Silsbe et al. (2016) </td>
   </tr>
   <tr>
     <td>Euphotic Depth </td>
     <td>Eppley VGPM Euphotic depth</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>Morel et al. (2007) </td>
   </tr>
   <tr>
     <td> </td>
     <td>VGPM Euphotic depth</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>Morel et al. (2007) </td>
   </tr>
   <tr>
     <td>  </td>
     <td>CBPM Euphotic depth</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>Morel et al. (2007) </td>
   </tr>
   <tr>
     <td>Iron Deposition </td>
     <td>ELabile Fraction</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>Myriokefalitakis et al. (2018) </td>
   </tr>
   <tr>
     <td> </td>
     <td>Soluble Fraction</td>
-    <td>12 $\times$ 180 $\times$ 360 </td>
+    <td>12 × 180 × 360 </td>
     <td>Hamilton et al. (2019) </td>
   </tr>
 </table>
@@ -327,7 +328,13 @@ In section "Modeling", it is discussed that the benefit of bagging random forest
 
 (Here is how this work could be developed further in a future project.)
 
-In future projects, I would further do research into the main predictors and decide which predictors are the most important factors that affect particle size distributions.
+In future projects, there are three possible research topics of work that can be developed:
+
+First, I would further do research into the main predictors and decide which predictors are the most important factors that affect particle size distributions. 
+
+Second, it would be greatly helpful to look at the data of different regions. By dividing the data into South or North Indian Ocean, South or North Tropical Pacific, South or North Tropical Atlantic, and so on, will help better understand different particle features in different regions. From this, we can potentially tell the features like nutrients, carbon flux and so on in different regions as well.
+
+Third, since our data is monthly mean data, we can further look at the seasonal change of the reconstructed data.
 
 ## References
 [1] DALL-E 3
