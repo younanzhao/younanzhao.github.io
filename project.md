@@ -240,6 +240,12 @@ model.fit(x, y)
 yhat = model.predict(x)
 y_oob = model.oob_prediction_
 
+def r2rmse(y_pred, y_true):
+    r2 = r2_score(y_true, y_pred)
+    rmse = np.sqrt(mean_squared_error(y_true, y_pred))
+    return {'r2': r2, 'rmse': rmse}
+
+
 mask = np.mean(X, axis=1)
 mask[~np.isnan(mask)] = 1
 mask[np.isnan(mask)] = 0
@@ -248,10 +254,24 @@ X[np.isnan(X)] = 0
 y_recon = model.predict(X)
 y_recon = y_recon * mask[:, np.newaxis]
 
-# Reshape for geographical grid
+# Calculate R2 and RMSE for both biological variable and slope predictions
+pred_bv.append({
+    'oobPred_bv': y_oob[:, 0],
+    'inBagPred_bv': yhat[:, 0],
+    'keep_data_bv': y[:, 0],
+    'oobStats': r2rmse(y_oob[:, 0], y[:, 0]),
+    'inBagStats': r2rmse(yhat[:, 0], y[:, 0]),
+    'recon':y_recon[:, 0].reshape(12,102,180,360)
+})
 
-pred_bv = y_recon[:, 0].reshape(12,102,180,360)
-pred_sp = y_recon[:, 1].reshape(12,102,180,360)
+pred_sp.append({
+    'oobPred': y_oob[:, 1],
+    'inBagPred': yhat[:, 1],
+    'keep_data': y[:, 1],
+    'oobStats': r2rmse(y_oob[:, 1], y[:, 1]),
+    'inBagStats': r2rmse(yhat[:, 1], y[:, 1]),
+    'recon':y_recon[:, 1].reshape(12,102,180,360)
+})
 
 # Apply topographic mask
 pred_bv *= tp_msk
