@@ -40,7 +40,7 @@ PSD is modeled as:
 
 $$ n(s) = n_0 \times s^{-\beta}$$
 
-where s is the equivalent spherical diameter or size of the particle (in units of 𝜇m), and n(s) is the abundance of particles (units of $m^{-3} \mu m^{-1}$) in a vanishingly small size interval [s, s + ds]. $n_0$ is the intercepth and β is the slope. So Biovolume is given by:
+where s is the equivalent spherical diameter or size of the particle (in units of 𝜇m), and n(s) is the abundance of particles (units of $m^{-3} \mu m^{-1}$) in a vanishingly small size interval [s, s + ds]. $n_0$ is the intercepth and $\beta$ is the slope. So Biovolume is given by:
 
 $$ BV = \int_{s_{min}}^{s_{max}} n(s) \cdot \frac{\pi}{6} \cdot s^3 ds = \frac{\pi}{6} \cdot n_0 \cdot(\frac{s_{max}^{4-\beta}}{4-\beta} - \frac{s_{min}^{4-\beta}}{4-\beta}) $$
 
@@ -345,15 +345,15 @@ Third, since the data is monthly mean data, we can further look at the seasonal 
 Fourth, I mainly focus on the euphotic zone and mixed layer depth data. In the future, I will look deeper into mesopelagic zone and other deeper regions.
 
 ## References
-[1] Clements, D. J., et al. "Constraining the particle size distribution of large marine particles in the global ocean with in situ optical observations and supervised learning." Global Biogeochemical Cycles 36.5 (2022): e2021GB007276.
+[^1] : [Clements, D. J., et al. "Constraining the particle size distribution of large marine particles in the global ocean with in situ optical observations and supervised learning." Global Biogeochemical Cycles 36.5 (2022): e2021GB007276.](https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2021GB007276)
 
-[2] Clements, D. J., et al. "New estimate of organic carbon export from optical measurements reveals the role of particle size distribution and export horizon." Global Biogeochemical Cycles 37.3 (2023): e2022GB007633.
+[^2] : [Clements, D. J., et al. "New estimate of organic carbon export from optical measurements reveals the role of particle size distribution and export horizon." Global Biogeochemical Cycles 37.3 (2023): e2022GB007633.](https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2022GB007633?casa_token=3wBksApHSaYAAAAA:XkxNucYY5IGqwv2QbNanwg7N9GvKIYnuEQ4dQI25Hn2J7UwKYXnFVs_kGH1KyNrh2COuELaIR5Jfmg)
 
-[3] Picheral, Marc, et al. "The Underwater Vision Profiler 5: An advanced instrument for high spatial resolution studies of particle size spectra and zooplankton." Limnology and Oceanography: Methods 8.9 (2010): 462-473.
+[^3] : [Picheral, Marc, et al. "The Underwater Vision Profiler 5: An advanced instrument for high spatial resolution studies of particle size spectra and zooplankton." Limnology and Oceanography: Methods 8.9 (2010): 462-473.](https://aslopubs.onlinelibrary.wiley.com/doi/abs/10.4319/lom.2010.8.462)
 
-[4] Kiko, Rainer, et al. "A global marine particle size distribution dataset obtained with the Underwater Vision Profiler 5." Earth System Science Data Discussions 2022 (2022): 1-37.
+[^4] : [Kiko, Rainer, et al. "A global marine particle size distribution dataset obtained with the Underwater Vision Profiler 5." Earth System Science Data Discussions 2022 (2022): 1-37.](https://essd.copernicus.org/articles/14/4315/2022/)
 
-[5] Guidi, Lionel, et al. "Relationship between particle size distribution and flux in the mesopelagic zone." Deep Sea Research Part I: Oceanographic Research Papers 55.10 (2008): 1364-1374.
+[^5] : [Guidi, Lionel, et al. "Relationship between particle size distribution and flux in the mesopelagic zone." Deep Sea Research Part I: Oceanographic Research Papers 55.10 (2008): 1364-1374.](https://www.sciencedirect.com/science/article/pii/S0967063708001209?casa_token=8Y0s3iCkMuEAAAAA:rohwab6x5369QwvKy4JC8uF7hvGyyrCUxvyNxfxh0irIgARJgcIE9NhFTmntxSsvhky00-lkvw)
 
 
 ### Code
