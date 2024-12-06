@@ -10,8 +10,6 @@
  </script>
 </head>
 
-
-
 ## Global reconstructions of particle size distribution from UVP5 observations using bagging random forest algorithm
 
 I applied machine learning techniques to investigate global particle size distributions (PSDs) data. Briefly, I reconstructed the BioVolume and Slope data by applying a bagged Random Forest (RF) algorithm to a global data set of UVP5 (Underwater Vision Profiler) observations. Below is my report.
@@ -40,9 +38,9 @@ The original BioVolume and Slope data are from EcoPart, where the data are colle
 
 PSD is modeled as:
 
-$n(s) = n_0 \times s^{-\beta}$
+$$ n(s) = n_0 \times s^{-\beta}$$
 
-where s is the equivalent spherical diameter or size of the particle (in units of 𝜇m), and n(s) is the abundance of particles (units of m-3 𝜇m-1) in a vanishingly small size interval [s, s + ds]. n0 is the intercepth and β is the slope. So Biovolume is given by:
+where s is the equivalent spherical diameter or size of the particle (in units of 𝜇m), and n(s) is the abundance of particles (units of $m^{-3} \mu m^{-1}$) in a vanishingly small size interval [s, s + ds]. $n_0$ is the intercepth and β is the slope. So Biovolume is given by:
 
 $$ BV = \int_{s_{min}}^{s_{max}} n(s) \cdot \frac{\pi}{6} \cdot s^3 ds = \frac{\pi}{6} \cdot n_0 \cdot(\frac{s_{max}^{4-\beta}}{4-\beta} - \frac{s_{min}^{4-\beta}}{4-\beta}) $$
 
