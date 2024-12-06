@@ -26,7 +26,7 @@ The original BioVolume and Slope data are from EcoPart, where the data are colle
 
 ![](assets/IMG/plot1.png)
 
-*Figure 1: The original BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1, and 1 on the plot means a biovolume of 10.*
+*Figure 1: The original BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm.*
 
 
 
@@ -267,7 +267,7 @@ The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as fo
 
 ![](assets/IMG/plot3.png)
 
-*Figure 3: The reconstructed BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1, and 1 on the plot means a biovolume of 10.*
+*Figure 3: The reconstructed BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm.*
 
 
 
