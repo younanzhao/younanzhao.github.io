@@ -280,13 +280,13 @@ pred_sp *= tp_msk
 The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as follows:
 (Figure X shows... [description of Figure X].)
 
-<img src="assets/IMG/plot3.png" width=70%>
+<img src="assets/IMG/plot3.png" width=70% />
 
-*Figure 4: The reconstructed BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm.*
+*Figure 4: The reconstructed BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm. The scattered dots are orginal biovolume data.*
 
 <img src="assets/IMG/plot4.png" width=70%>
 
-*Figure 5: The reconstructed Slope data. It is unitless.*
+*Figure 5: The reconstructed Slope data. It is unitless. The scattered dots are orginal slope data.*
 
 Figure 4 and 5 show the global reconstructions of PSD BV and slope. The reconstruction method is able to capture most of the variability of the UVP5 observations, and robustly reproduce the gridded measurements, with global average values of 0.34 ppm for BV (r2 = 0.99) and 3.8 for slope (r2 = 0.97) when considering the entire data set.
 
