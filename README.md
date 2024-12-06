@@ -287,7 +287,7 @@ pred_bv *= tp_msk
 pred_sp *= tp_msk
 ```
 
-Full code please see: [Code]((assets/Code/))
+Full code please see: [Code](https://github.com/younanzhao/younanzhao.github.io/tree/main/assets/Code))
 
 ## Results
 
