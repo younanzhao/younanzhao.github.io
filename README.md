@@ -23,6 +23,7 @@ I concluded that ...
 The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The UVP instrument captures images of particles within a control volume as it is lowered in the water column, providing counts of particles with sizes ranging from different diameters. The UVP quantifies the abundance of particulate matter into size classes (bins), allowing to determine PSD as a function of depth.
 
 <img src="assets/IMG/UVP5.png" width=40%>
+
 *Figure 1: Images of plankton collected by UVP5 (Kiko and Schröder, 2020)*
 
 PSD is modeled as:
@@ -299,15 +300,19 @@ In section "Modeling", it is discussed that the benefit of bagging random forest
 (From Figure X, one can see that... [interpretation of Figure X].)
 
 <img src="assets/IMG/plot5.png" width=50%>
+
 *Figure 6: Performance of the Random Forest reconstruction shown as density scatter plots of predicted versus observed BV (colors indicate the normalized density of observations at each point).*
 
 <img src="assets/IMG/plot6.png" width=50%>
+
 *Figure 7: Same as figure 6, but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
 
 <img src="assets/IMG/plot7.png" width=50%>
+
 *Figure 8: Performance of the Random Forest reconstruction shown as density scatter plots of predicted versus observed particulate slope (colors indicate the normalized density of observations at each point).*
 
 <img src="assets/IMG/plot8.png" width=50%>
+
 *Figure 9: Same as figure 8,but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
 
 
