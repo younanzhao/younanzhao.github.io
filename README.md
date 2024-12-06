@@ -22,6 +22,7 @@ I concluded that ...
 
 The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The UVP instrument captures images of particles within a control volume as it is lowered in the water column, providing counts of particles with sizes ranging from different diameters. The UVP quantifies the abundance of particulate matter into size classes (bins), allowing to determine PSD as a function of depth.
 
+<img src="assets/IMG/UVP5.png" width=30%>
 ![alt|5](assets/IMG/UVP5.png)
 *Figure 1: Images of plankton collected by UVP5 (Kiko and Schröder, 2020)*
 
