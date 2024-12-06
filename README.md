@@ -10,26 +10,25 @@
  </script>
 </head>
 
-## Global reconstructions of particle size distribution from UVP5 observations using bagging random forest algorithm
+## Global Reconstructions of Particle Size Distribution from UVP5 Observations Using Bagging Random Forest Algorithm
 
 I applied machine learning techniques to investigate global particle size distributions (PSDs) data. Briefly, I reconstructed the BioVolume and Slope data by applying a bagged Random Forest (RF) algorithm to a global data set of UVP5 (Underwater Vision Profiler) observations. Below is my report.
 
 ***
 
 ## Introduction 
-Export of sinking particles from the surface ocean is critical for carbon sequestration and to provide energy to the deep biosphere. The magnitude and spatial patterns of this export have been estimated in the past by in situ particle flux observations, satellite-based algorithms, and ocean biogeochemical models; however, these estimates remain uncertain.
 
-Here, I present an analysis of particle size distributions (PSDs) from a global compilation of in situ Underwater Vision Profiler 5 (UVP5) optical measurements. Using a machine learning algorithm, I extrapolate sparse UVP5 observations to the global ocean from well-sampled oceanographic variables. I reconstruct global maps of PSD parameters (biovolume [BV] and slope) for particles at the base of the euphotic zone. These reconstructions reveal consistent global patterns, with high chlorophyll regions generally characterized by high particle BV and flatter PSD slope, that is, a high relative abundance of large versus small particles.
+The export of sinking particles from the surface ocean plays a critical role in carbon sequestration and provides energy to the deep biosphere. Despite numerous studies estimating the magnitude and spatial patterns of this export through in situ particle flux observations, satellite-based algorithms, and ocean biogeochemical models, uncertainties persist.
 
-The Random Forest (RF) algorithm is an example of supervised learning that employs labeled data to teach how to categorize unlabeled data. A RF deploys a decision tree learning scheme to solve a regression equation iteratively, and reports the ensemble average. Using a RF, each individual decision tree is trained on a subset of the available data, with a subset of predictors, but the power of the method emerges when considering the ensemble average. The RF is able to learn statistical relationships between target variables (here, UVP5-derived slope and BV) and a series of predictors (here, environmental variables), to make reconstructions that minimize the error between predicted and observed data. Because a RF is highly non-linear, it runs the risk of overfitting the data, producing solutions with low error, but also limited predictive power outside of the training data set. To mitigate the risk of overfitting, the RF does not use all data points for training. Instead, a bootstrapped sample (∼70%) of the data is selected for each tree in the forest. The skill of the final regression is determined by finding the error between the model and the data that was not used for training, that is, the so-called “out-of-bag” (OOB) data.
+In this study, I analyze global particle size distributions (PSDs) derived from a compilation of in situ Underwater Vision Profiler 5 (UVP5) optical measurements. Using machine learning techniques, I extrapolate sparse UVP5 observations to the global ocean using well-sampled oceanographic variables. Specifically, I reconstruct global maps of PSD parameters - biovolume (BV) and slope. These reconstructions reveal consistent global patterns, with high chlorophyll regions generally characterized by high BV and flatter slope, that is, indicating a greater relative abundance of larger particles compared to small ones.
 
-Therefore, the idea of using RF to extrapolate the PSD data is feasible. I use bagging RF algorithm to extrapolate the gridded PSD BV and slope at the euphotic zone and mixed layer depth horizons, based on monthly climatological predictors that include temperature, salinity, silicate, depth, shortwave radiation and other biogeochemical variables such as oxygen, nutrients, chlorophyll, mixed layer depth, net primary production (NPP), euphotic depth, and iron deposition. These predictors can make sure that the model captures both static and denamic aspects of PSD, improving the robustness and accuracy of the resulting reconstructions.
+The Random Forest (RF) algorithm used here is a supervised learning method that learns from labeled data to predict outcomes for unlabeled data. RF employs decision tree in an ensemble, training each tree on a bootstrapped subset of the data and averaging the results. This ensemble approach improves predictive performance, as it reduces the risk of overfitting and captures complex, non-linear relationships between variables. The model’s performance is validated using "out-of-bag" (OOB) data, i.e., data that is not used in training individual trees, ensuring the robustness of the reconstructions.
 
-In conclusion, the project demonstrates the ability of statistical machine learning methods to extrapolate these quantities globally, and reveal the opposite patterns of PSD BioVolume data and Slope data in the global ocean.
+In this work, I employ a Bagging RF algorithm to extrapolate PSD BV and slope values to a global grid, using monthly climatological predictors such as temperature, salinity, silicate, depth, shortwave radiation, and various biogeochemical variables like oxygen, nutrients, chlorophyll, mixed layer depth, net primary production (NPP), euphotic depth, and iron deposition. These predictors help capture both static and dynamic aspects of PSDs, improving the accuracy and reliability of the reconstructions.
 
 ## Data
 
-The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The data set consists of over 6,700 profiles from 119 cruises, collected from 2008 to 2020. The UVP instrument captures images of particles within a control volume as it is lowered in the water column, providing counts of particles with sizes ranging from different diameters. The UVP quantifies the abundance of particulate matter into size classes (bins), allowing to determine PSD as a function of depth.
+The original BV and Slope data used in this study were collected by UVP5 during various cruises between 2008 and 2020 as part of the EcoPart dataset. , where the data are collecting by UVP5 from different cruises. The dataset includes over 6,700 profiles from 119 cruises. UVP5 captures images of particles in a control volume as it is lowered through the water column, recording particle size distributions (PSDs) in multiple size bins.
 
 ![](assets/IMG/UVP5.png)
 
@@ -39,25 +38,26 @@ PSD is modeled as:
 
 $$ n(s) = n_0 \times s^{-\beta}$$
 
-where s is the equivalent spherical diameter or size of the particle (in units of $\mu m$), and n(s) is the abundance of particles (units of $m^{-3} \mu m^{-1}$) in a vanishingly small size interval [s, s + ds]. $n_0$ is the intercepth and $\beta$ is the slope. So Biovolume is given by:
+where s is the equivalent spherical diameter or particle size (in units of $\mu m$), and n(s) is the abundance of particles (units of $m^{-3} \mu m^{-1}$) in a vanishingly small size interval [s, s + ds]. $n_0$ is the intercepth and $\beta$ is the slope. So BV is given by:
 
 $$ BV = \int_{s_{min}}^{s_{max}} n(s) \cdot \frac{\pi}{6} \cdot s^3 ds = \frac{\pi}{6} \cdot n_0 \cdot(\frac{s_{max}^{4-\beta}}{4-\beta} - \frac{s_{min}^{4-\beta}}{4-\beta}) $$
 
-Set $s_{min} = 105 \mu m$ to avoid a potential slight instrument bias in the lowest size classes; set $s_{max} = 5 mm$, which corresponds to the size where zooplankton start to dominate the BV at a variety of locations sampled by UVP5.
+where we set $s_{min} = 105 \mu m$ to avoid a potential slight instrument bias in the lowest size classes; and $s_{max} = 5 mm$, which corresponds to the size where zooplankton start to dominate the BV at a variety of locations sampled by UVP5.
 
-Therefore, with the Biovolume data and the slope data, we would be able to determine the intercept, thus revealing the particle distributions in the global ocean, and therefore do further research.
+Therefore, with the Biovolume data and the slope data, we would be able to in return determine the intercept, thus allowing for detailed modeling of particle distributions, which is key for understanding the biogeochemical cycles in the ocean.
 
 The PSDs data is binned on a regular 1° resolution global grid. Taking 100m depth (which is usually considered as a threshold for mixed layer or euphotic layer) as an example, the plots of seasonal mean of the original data are as follows: 
 
 ![](assets/IMG/plot1.png)
 
-*Figure 2: The original BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm.*
+*Figure 2: Original BioVolume data. Values were preprocessed using log10, where -1 corresponds to a biovolume of 0.1 ppm, and 1 corresponds to a biovolume of 10 ppm.*
 
 ![](assets/IMG/plot2.png)
 
-*Figure 3: The original Slope data. It is unitless.*
+*Figure 3: Original Slope data (unitless).*
 
-The predictors are collected from various datasets based on the choice in Clements et al. (2022):
+In this project, I use the RF algorithm to predict particle biovolume and slope based on a range of oceanographic predictors. The predictors are collected from various datasets based on the choice in Clements et al. (2022):
+
 <table>
   <tr>
     <th>Feature Category</th>
@@ -203,7 +203,7 @@ For temperature, salinity, silicate, oxygen, and nutrients, we will also conside
 
 Full dataset please see: [Data](https://drive.google.com/file/d/175V6WS3_XfMfbhGWyWN2-m_0Ire3VIcR/view?usp=share_link).
 
-## Modelling
+## Modeling
 
 The algorithm applied in this project is based on Bagging Random Forest Regression, which is a combination of the Random Forest (RF) ensemble learning method and the Bagging (Bootstrap Aggregating) technique.
 
@@ -293,17 +293,17 @@ Full code please see: [Code](https://github.com/younanzhao/younanzhao.github.io/
 
 ## Results
 
-The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as follows:
+The reconstructed seasonal mean BV and Slope at 100m depth are shown in Figure 4 and 5 below.
 
 ![](assets/IMG/plot3.png)
 
-*Figure 4: The reconstructed BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm. The scattered dots are orginal biovolume data.*
+*Figure 4: Extrapolated BioVolume data. Values were preprocessed using log10, where -1 corresponds to a biovolume of 0.1 ppm, and 1 corresponds to a biovolume of 10 ppm. Original UVP5 data is shown as scattered dots.*
 
 ![](assets/IMG/plot4.png)
 
-*Figure 5: The reconstructed Slope data. It is unitless. The scattered dots are orginal slope data.*
+*Figure 5: Extrapolated Slope data (unitless). Original UVP5 data is shown as scattered dots.*
 
-Figure 4 and 5 show the global reconstructions of PSD BV and slope. The reconstruction method is able to capture most of the variability of the UVP5 observations, and robustly reproduce the gridded measurements, with global average values of 0.34 ppm for BV ($R^2 = 0.99$) and 3.8 for slope ($R^2 = 0.97$) when considering the entire data set.
+The reconstructed data is able to capture most of the variability of the UVP5 observations, and robustly reproduce the gridded measurements, with global average values of 0.34 ppm for BV ($R^2 = 0.99$) and 3.8 for slope ($R^2 = 0.97$).
 
 The reconstructions of the PSD for the time frame 2008 to 2020, reveal high BV in productive regions such as high latitudes, coastal waters, and upwelling systems, and low BV in the oligotrophic subtropical gyres. PSD slopes show a nearly opposite pattern, with smaller slopes in more productive regions, and larger slopes in oligotrophic waters.
 
@@ -325,25 +325,21 @@ In section "Modeling", it is discussed that the benefit of bagging random forest
 
 ![](assets/IMG/plot8.png)
 
-*Figure 9: Same as figure 8,but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
+*Figure 9: Same as figure 8, but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
 
 As shown in Figure 7 and 9, these OOB observations are also robustly predicted, with a $R^2$ of 0.93 for BV and 0.81 for slope.
 
 ## Conclusion
 
-In this project, I used bagging random forest algorithm to reconstruct the PSDs data, and demonstrates the ability of statistical machine learning methods to extrapolate these quantities globally.
+In this project, I used bagging random forest algorithm to reconstruct the PSDs data, and demonstrates the ability of statistical machine learning methods to extrapolate these quantities globally. I was able to highlight some spatially coherent patterns, and reveal the opposite patterns of PSD BV data and Slope data in the euphotic zone and mixed layer level. The model successfully captures global patterns in particle size distributions and reveals a strong correlation between the reconstruction and the original data according to validation from out-of-bag predictions.
 
-The statistical nature of the machine learning approach does not directly reveal mechanisms behind particle abundance and size structure, but i was able to highlight some spatially coherent patterns, and reveal the opposite patterns of PSD BioVolume data and Slope data in the global ocean. The validation from out-of-bag predictions prove the feasibility of this method.
+Future work could focus on several aspects:
 
-In future projects, there are several possible research topics of work that can be developed:
+* Exploring Key Predictors: I would further do research into the main predictors and decide which predictors are the most important factors that affect particle size distributions. For example, since the data is monthly mean data, we can further look at the seasonal change of the reconstructed data, and therefore to see if the importance of the temperature predictor.
 
-First, I would further do research into the main predictors and decide which predictors are the most important factors that affect particle size distributions. For example, since the data is monthly mean data, we can further look at the seasonal change of the reconstructed data, and therefore to see if the importance of the temperature predictor.
+* Regional Analysis: it would be greatly helpful to look at the data of different regions. By dividing the data into South or North Indian Ocean, South or North Tropical Pacific, South or North Tropical Atlantic, and so on, will help better understand different particle features in different regions. From this, we can potentially tell the features like nutrients, carbon flux and so on in different regions as well.
 
-Second, it would be greatly helpful to look at the data of different regions. By dividing the data into South or North Indian Ocean, South or North Tropical Pacific, South or North Tropical Atlantic, and so on, will help better understand different particle features in different regions. From this, we can potentially tell the features like nutrients, carbon flux and so on in different regions as well.
-
-Third, I mainly focus on the euphotic zone and mixed layer depth data. In the future, I will look deeper into mesopelagic zone and other deeper regions.
-
-Fourth, I would like to try different machine learning methods (e.g., Artificial Neural Networks, Boosted Forests) to train the data and compare the results with what I have got from random forest algorithm.
+* Deep Ocean Exploration: I mainly focus on the euphotic zone and mixed layer depth data. In the future, I will look deeper into mesopelagic zone and other deeper regions.
 
 ## References
 [[1] Clements, D. J., et al. "Constraining the particle size distribution of large marine particles in the global ocean with in situ optical observations and supervised learning." Global Biogeochemical Cycles 36.5 (2022): e2021GB007276.](https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2021GB007276)
