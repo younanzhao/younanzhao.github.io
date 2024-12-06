@@ -211,7 +211,7 @@ One of the key features of Bagging RF is the ability to evaluate the model using
 
 For both the in-bag and out-of-bag predictions, the $$R^2$$ and RMSE metrics are calculated using the r2rmse() function.
 
-Here is an excerpt of the data:
+Here is an excerpt of the code:
 
 ```python
 from sklearn.ensemble import RandomForestRegressor
