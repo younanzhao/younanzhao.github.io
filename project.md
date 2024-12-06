@@ -283,6 +283,15 @@ The reconstructed seasonal mean BioVolume and Slope data at 200m depth are as fo
 
 (From Figure X, one can see that... [interpretation of Figure X].)
 
+![](assets/IMG/plot5.png)
+
+![](assets/IMG/plot6.png)
+
+![](assets/IMG/plot7.png)
+
+![](assets/IMG/plot8.png)
+
+
 ## Conclusion
 
 (Here is a brief summary. From this work, the following conclusions can be made:)
