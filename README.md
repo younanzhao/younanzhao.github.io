@@ -22,7 +22,7 @@ I concluded that ...
 
 The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The UVP instrument captures images of particles within a control volume as it is lowered in the water column, providing counts of particles with sizes ranging from different diameters. The UVP quantifies the abundance of particulate matter into size classes (bins), allowing to determine PSD as a function of depth.
 
-![](assets/IMG/UVP5.png)
+![](assets/IMG/UVP5.png | width = 100)
 *Figure 1: Images of plankton collected by UVP5 (Kiko and Schröder, 2020)*
 
 PSD is modeled as:
@@ -37,13 +37,13 @@ Therefore, with the Biovolume data and the slope data, we would be able to deter
 
 The PSDs data is binned on a regular 1° resolution global grid. Taking 100m depth (which is usually considered as a threshold for mixed layer or euphotic layer) as an example, the plots of seasonal mean of the original data are as follows: 
 
-![](assets/IMG/plot1.png)
+![](assets/IMG/plot1.png | width = 200)
 
-*Figure 1: The original BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm.*
+*Figure 2: The original BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm.*
 
-![](assets/IMG/plot2.png)
+![](assets/IMG/plot2.png | width = 200)
 
-*Figure 2: The original Slope data. It is unitless.*
+*Figure 3: The original Slope data. It is unitless.*
 
 The predictors are collected from various datasets based on the choice in Clements et al. (2022):
 <table>
@@ -284,13 +284,13 @@ pred_sp *= tp_msk
 The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as follows:
 (Figure X shows... [description of Figure X].)
 
-![](assets/IMG/plot3.png)
+![](assets/IMG/plot3.png | width = 200)
 
-*Figure 3: The reconstructed BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm.*
+*Figure 4: The reconstructed BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm.*
 
-![](assets/IMG/plot4.png)
+![](assets/IMG/plot4.png | width = 200)
 
-*Figure 4: The reconstructed Slope data. It is unitless.*
+*Figure 5: The reconstructed Slope data. It is unitless.*
 
 ## Discussion
 
@@ -298,17 +298,17 @@ In section "Modeling", it is discussed that the benefit of bagging random forest
 
 (From Figure X, one can see that... [interpretation of Figure X].)
 
-![](assets/IMG/plot5.png)
-*Figure 5: Performance of the Random Forest reconstruction shown as density scatter plots of predicted versus observed BV (colors indicate the normalized density of observations at each point).*
+![](assets/IMG/plot5.png | width = 100)
+*Figure 6: Performance of the Random Forest reconstruction shown as density scatter plots of predicted versus observed BV (colors indicate the normalized density of observations at each point).*
 
-![](assets/IMG/plot6.png)
-*Figure 6: Same as figure 5, but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
+![](assets/IMG/plot6.png | width = 100)
+*Figure 7: Same as figure 6, but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
 
-![](assets/IMG/plot7.png)
-*Figure 7: Performance of the Random Forest reconstruction shown as density scatter plots of predicted versus observed particulate slope (colors indicate the normalized density of observations at each point).*
+![](assets/IMG/plot7.png | width = 100)
+*Figure 8: Performance of the Random Forest reconstruction shown as density scatter plots of predicted versus observed particulate slope (colors indicate the normalized density of observations at each point).*
 
-![](assets/IMG/plot8.png)
-*Figure 8: Same as figure 7,but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
+![](assets/IMG/plot8.png | width = 100)
+*Figure 9: Same as figure 8,but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
 
 
 ## Conclusion
@@ -328,7 +328,10 @@ Second, it would be greatly helpful to look at the data of different regions. By
 Third, since our data is monthly mean data, we can further look at the seasonal change of the reconstructed data.
 
 ## References
-[1] DALL-E 3
+[1] Clements, D. J. et al. Constraining the Particle Size Distribution of Large Marine Particles in the Global Ocean With In Situ Optical Observations and Supervised Learning. Glob. Biogeochem. Cycles 36, e2021GB007276 (2022).
+[2] Clements, D. J. et al. New Estimate of Organic Carbon Export From Optical Measurements Reveals the Role of Particle Size Distribution and Export Horizon. Glob. Biogeochem. Cycles 37, e2022GB007633 (2023).
+[3] Kiko, R. et al. A global marine particle size distribution dataset obtained with the Underwater Vision Profiler 5. Earth Syst. Sci. Data 14, 4315–4337 (2022).
+[4] 
 
 
 
