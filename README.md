@@ -13,24 +13,31 @@ Here, I present an analysis of particle size distributions (PSDs) from a global 
 
 The Random Forest (RF) algorithm is an example of supervised learning that employs labeled data to teach how to categorize unlabeled data. A RF deploys a decision tree learning scheme to solve a regression equation iteratively, and reports the ensemble average. Using a RF, each individual decision tree is trained on a subset of the available data, with a subset of predictors, but the power of the method emerges when considering the ensemble average. The RF is able to learn statistical relationships between target variables (here, UVP5-derived slope and BV) and a series of predictors (here, environmental variables), to make reconstructions that minimize the error between predicted and observed data. Because a RF is highly non-linear, it runs the risk of overfitting the data, producing solutions with low error, but also limited predictive power outside of the training data set. To mitigate the risk of overfitting, the RF does not use all data points for training. Instead, a bootstrapped sample (∼70%) of the data is selected for each tree in the forest. The skill of the final regression is determined by finding the error between the model and the data that was not used for training, that is, the so-called “out-of-bag” (OOB) data.
 
-Therefore, the idea of using RF to extrapolate the PSD data is feasible. I use bagged RF algorithm to extrapolate the gridded PSD BV and slope at the euphotic zone and mixed layer depth horizons, based on monthly climatological predictors that include temperature, salinity, silicate, depth, shortwave radiation and other biogeochemical variables such as oxygen, nutrients, chlorophyll, mixed layer depth, net primary production (NPP), euphotic depth, and iron deposition. These predictors can make sure that the model captures both static and denamic aspects of PSD, improving the robustness adn accuracy of the resulting reconstructions.
+Therefore, the idea of using RF to extrapolate the PSD data is feasible. I use bagging RF algorithm to extrapolate the gridded PSD BV and slope at the euphotic zone and mixed layer depth horizons, based on monthly climatological predictors that include temperature, salinity, silicate, depth, shortwave radiation and other biogeochemical variables such as oxygen, nutrients, chlorophyll, mixed layer depth, net primary production (NPP), euphotic depth, and iron deposition. These predictors can make sure that the model captures both static and denamic aspects of PSD, improving the robustness and accuracy of the resulting reconstructions.
 
 I concluded that ...
 
 
 ## Data
 
-(Here is an overview of the dataset, how it was obtained and the preprocessing steps taken, with some plots!)
-
 The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The UVP instrument captures images of particles within a control volume as it is lowered in the water column, providing counts of particles with sizes ranging from different diameters. The UVP quantifies the abundance of particulate matter into size classes (bins), allowing to determine PSD as a function of depth.
 
+![](assets/IMG/UVP5.png)
+
+PSD is modeled as:
+$$ n(s) = n_0 \times s^{-\beta}$$,
+
+where s is the equivalent spherical diameter or size of the particle (in units of 𝜇m), and n(s) is the abundance of particles (units of m-3 𝜇m-1) in a vanishingly small size interval [s, s + ds]. $$n_0$$ is the intercepth adn $$\beta$$ is the slope. So Biovolume is given by:
+
+$$ BV = \int_{s_{min}}^{s_{max}} n(s) \cdot \frac{\pi}{6} \cdot s^3 ds = \frac{\pi}{6} \cdot n_0 \cdot(\frac{s_{max}^{4-\beta}}{4-\beta} - \frac{s_{min}^{4-\beta}}{4-\beta}) $$
+
+Therefore, with the Biovolume data and the slope data, we would be able to determine the intercept, thus revealing the particle distributions in the global ocean, and therefore do further research.
 
 The PSDs data is binned on a regular 1° resolution global grid. Taking 100m depth (which is usually considered as a threshold for mixed layer or euphotic layer) as an example, the plots of seasonal mean of the original data are as follows: 
 
 ![](assets/IMG/plot1.png)
 
 *Figure 1: The original BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm.*
-
 
 ![](assets/IMG/plot2.png)
 
@@ -184,25 +191,13 @@ For temperature, salinity, silicate, oxygen, and nutrients, we will also conside
 
 ## Modelling
 
-(Here are some more details about the machine learning approach, and why this was deemed appropriate for the dataset. )
-
-(The model might involve optimizing some quantity. You can include snippets of code if it is helpful to explain things.)
-
-
 The algorithm applied in this project is based on Bagging Random Forest Regression, which is a combination of the Random Forest (RF) ensemble learning method and the Bagging (Bootstrap Aggregating) technique.
 
 RF is an ensemble of decision trees, where each tree is trained on a different random subset of the data, and predictions are made by averaging the predictions of all the tress. Then main idea is that combining multiple models (trees) improves generalization by reducing overfitting. Bagging is a technique where each tree is trained on a random subset of the data. These subsets are created by bootstrapping, i.e. sampling with replacement from the original dataset. Some data points are included multiple times, while others are left out. The key concept is that the data points left out in each subset can be used to estimate the model's generalization error, i.e. how well it might perform on unseen data.
 
-One of the key features of Bagging RF is the ability to evaluate the model using in-bag and **out-of-bag (OOB)** predictions. In-bag predictions are predictions made on the same data points that were used to train each individual decision tree, i.e. the data points that were sampled in the bootstrapped subset. Each tree is trained on a different subset of the data, leaving out about one-third of the data. The data points that were left out in each bootstrapped sample are used to make OOB predictions, effectively serving as a validation set. This is especially useful for assessing model performance without needing a separate validation dataset.
+One of the key features of Bagging RF is the ability to evaluate the model using in-bag and out-of-bag (OOB) predictions. In-bag predictions are predictions made on the same data points that were used to train each individual decision tree, i.e. the data points that were sampled in the bootstrapped subset. Each tree is trained on a different subset of the data, leaving out about one-third of the data. The data points that were left out in each bootstrapped sample are used to make OOB predictions, effectively serving as a validation set. This is especially useful for assessing model performance without needing a separate validation dataset.
 
-For both the in-bag and out-of-bag predictions, the **$R^2$** and **RMSE** metrics are calculated using the r2rmse() function.
-
-
-
-
-
-
-
+For both the in-bag and out-of-bag predictions, the $$R^2$$ and RMSE metrics are calculated using the r2rmse() function.
 
 
 ```python
@@ -291,15 +286,9 @@ The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as fo
 
 *Figure 3: The reconstructed BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm.*
 
-
-
-
 ![](assets/IMG/plot4.png)
 
 *Figure 4: The reconstructed Slope data. It is unitless.*
-
-
-
 
 ## Discussion
 
@@ -339,10 +328,11 @@ Third, since our data is monthly mean data, we can further look at the seasonal 
 ## References
 [1] DALL-E 3
 
-[back](./)
 
 
 
 ### Code
 
 A link to your code must be submitted on BruinLearn, and the course instructor must be able to download your code to mark it. The code could be in a Google Colab notebook (make sure to *share* the notebook so access is set to **Anyone with the link**), or you could upload the code into a separate GitHub repository, or you could upload the code into the `assets` directory of your website and link to it. 
+
+[back](./)
