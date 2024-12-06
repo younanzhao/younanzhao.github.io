@@ -303,7 +303,7 @@ The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as fo
 
 *Figure 5: The reconstructed Slope data. It is unitless. The scattered dots are orginal slope data.*
 
-Figure 4 and 5 show the global reconstructions of PSD BV and slope. The reconstruction method is able to capture most of the variability of the UVP5 observations, and robustly reproduce the gridded measurements, with global average values of 0.34 ppm for BV (r2 = 0.99) and 3.8 for slope (r2 = 0.97) when considering the entire data set.
+Figure 4 and 5 show the global reconstructions of PSD BV and slope. The reconstruction method is able to capture most of the variability of the UVP5 observations, and robustly reproduce the gridded measurements, with global average values of 0.34 ppm for BV ($R^2 = 0.99$) and 3.8 for slope ($R^2 = 0.97$) when considering the entire data set.
 
 The reconstructions of the PSD for the time frame 2008 to 2020, reveal high BV in productive regions such as high latitudes, coastal waters, and upwelling systems, and low BV in the oligotrophic subtropical gyres. PSD slopes show a nearly opposite pattern, with smaller slopes in more productive regions, and larger slopes in oligotrophic waters.
 
@@ -327,7 +327,7 @@ In section "Modeling", it is discussed that the benefit of bagging random forest
 
 *Figure 9: Same as figure 8,but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
 
-As shown in Figure 7 and 9, these OOB observations are also robustly predicted, with a r2 of 0.93 for BV and 0.81 for slope.
+As shown in Figure 7 and 9, these OOB observations are also robustly predicted, with a $R^2$ of 0.93 for BV and 0.81 for slope.
 
 ## Conclusion
 
