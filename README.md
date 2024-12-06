@@ -25,8 +25,7 @@ The Random Forest (RF) algorithm is an example of supervised learning that emplo
 
 Therefore, the idea of using RF to extrapolate the PSD data is feasible. I use bagging RF algorithm to extrapolate the gridded PSD BV and slope at the euphotic zone and mixed layer depth horizons, based on monthly climatological predictors that include temperature, salinity, silicate, depth, shortwave radiation and other biogeochemical variables such as oxygen, nutrients, chlorophyll, mixed layer depth, net primary production (NPP), euphotic depth, and iron deposition. These predictors can make sure that the model captures both static and denamic aspects of PSD, improving the robustness and accuracy of the resulting reconstructions.
 
-I concluded that ...
-
+In conclusion, the project demonstrates the ability of statistical machine learning methods to extrapolate these quantities globally, and reveal the opposite patterns of PSD BioVolume data and Slope data in the global ocean.
 
 ## Data
 
@@ -212,6 +211,8 @@ One of the key features of Bagging RF is the ability to evaluate the model using
 
 For both the in-bag and out-of-bag predictions, the $$R^2$$ and RMSE metrics are calculated using the r2rmse() function.
 
+Here is an excerpt of the data:
+
 ```python
 from sklearn.ensemble import RandomForestRegressor
 
@@ -254,7 +255,6 @@ def r2rmse(y_pred, y_true):
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
     return {'r2': r2, 'rmse': rmse}
 
-
 mask = np.mean(X, axis=1)
 mask[~np.isnan(mask)] = 1
 mask[np.isnan(mask)] = 0
@@ -287,10 +287,11 @@ pred_bv *= tp_msk
 pred_sp *= tp_msk
 ```
 
+Full code please see: 
+
 ## Results
 
 The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as follows:
-(Figure X shows... [description of Figure X].)
 
 ![](assets/IMG/plot3.png)
 
@@ -328,32 +329,30 @@ As shown in Figure 7 and 9, these OOB observations are also robustly predicted, 
 
 ## Conclusion
 
-(Here is a brief summary. From this work, the following conclusions can be made:)
-* first conclusion
-* second conclusion
+In this project, I used bagging random forest algorithm to reconstruct the PSDs data, and demonstrates the ability of statistical machine learning methods to extrapolate these quantities globally.
 
-(Here is how this work could be developed further in a future project.)
+The statistical nature of the machine learning approach does not directly reveal mechanisms behind particle abundance and size structure, but i was able to highlight some spatially coherent patterns, and reveal the opposite patterns of PSD BioVolume data and Slope data in the global ocean. The validation from out-of-bag predictions prove the feasibility of this method.
 
 In future projects, there are several possible research topics of work that can be developed:
 
-First, I would further do research into the main predictors and decide which predictors are the most important factors that affect particle size distributions. 
+First, I would further do research into the main predictors and decide which predictors are the most important factors that affect particle size distributions. For example, since the data is monthly mean data, we can further look at the seasonal change of the reconstructed data, and therefore to see if the importance of the temperature predictor.
 
 Second, it would be greatly helpful to look at the data of different regions. By dividing the data into South or North Indian Ocean, South or North Tropical Pacific, South or North Tropical Atlantic, and so on, will help better understand different particle features in different regions. From this, we can potentially tell the features like nutrients, carbon flux and so on in different regions as well.
 
-Third, since the data is monthly mean data, we can further look at the seasonal change of the reconstructed data.
+Third, I mainly focus on the euphotic zone and mixed layer depth data. In the future, I will look deeper into mesopelagic zone and other deeper regions.
 
-Fourth, I mainly focus on the euphotic zone and mixed layer depth data. In the future, I will look deeper into mesopelagic zone and other deeper regions.
+Fourth, I would like to try different machine learning methods (e.g., Artificial Neural Networks, Boosted Forests) to train the data and compare the results with what I have got from random forest algorithm.
 
 ## References
-[^1] : [Clements, D. J., et al. "Constraining the particle size distribution of large marine particles in the global ocean with in situ optical observations and supervised learning." Global Biogeochemical Cycles 36.5 (2022): e2021GB007276.](https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2021GB007276)
+[^1]: [Clements, D. J., et al. "Constraining the particle size distribution of large marine particles in the global ocean with in situ optical observations and supervised learning." Global Biogeochemical Cycles 36.5 (2022): e2021GB007276.](https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2021GB007276)
 
-[^2] : [Clements, D. J., et al. "New estimate of organic carbon export from optical measurements reveals the role of particle size distribution and export horizon." Global Biogeochemical Cycles 37.3 (2023): e2022GB007633.](https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2022GB007633?casa_token=3wBksApHSaYAAAAA:XkxNucYY5IGqwv2QbNanwg7N9GvKIYnuEQ4dQI25Hn2J7UwKYXnFVs_kGH1KyNrh2COuELaIR5Jfmg)
+[^2]: [Clements, D. J., et al. "New estimate of organic carbon export from optical measurements reveals the role of particle size distribution and export horizon." Global Biogeochemical Cycles 37.3 (2023): e2022GB007633.](https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2022GB007633?casa_token=3wBksApHSaYAAAAA:XkxNucYY5IGqwv2QbNanwg7N9GvKIYnuEQ4dQI25Hn2J7UwKYXnFVs_kGH1KyNrh2COuELaIR5Jfmg)
 
-[^3] : [Picheral, Marc, et al. "The Underwater Vision Profiler 5: An advanced instrument for high spatial resolution studies of particle size spectra and zooplankton." Limnology and Oceanography: Methods 8.9 (2010): 462-473.](https://aslopubs.onlinelibrary.wiley.com/doi/abs/10.4319/lom.2010.8.462)
+[^3]: [Picheral, Marc, et al. "The Underwater Vision Profiler 5: An advanced instrument for high spatial resolution studies of particle size spectra and zooplankton." Limnology and Oceanography: Methods 8.9 (2010): 462-473.](https://aslopubs.onlinelibrary.wiley.com/doi/abs/10.4319/lom.2010.8.462)
 
-[^4] : [Kiko, Rainer, et al. "A global marine particle size distribution dataset obtained with the Underwater Vision Profiler 5." Earth System Science Data Discussions 2022 (2022): 1-37.](https://essd.copernicus.org/articles/14/4315/2022/)
+[^4]: [Kiko, Rainer, et al. "A global marine particle size distribution dataset obtained with the Underwater Vision Profiler 5." Earth System Science Data Discussions 2022 (2022): 1-37.](https://essd.copernicus.org/articles/14/4315/2022/)
 
-[^5] : [Guidi, Lionel, et al. "Relationship between particle size distribution and flux in the mesopelagic zone." Deep Sea Research Part I: Oceanographic Research Papers 55.10 (2008): 1364-1374.](https://www.sciencedirect.com/science/article/pii/S0967063708001209?casa_token=8Y0s3iCkMuEAAAAA:rohwab6x5369QwvKy4JC8uF7hvGyyrCUxvyNxfxh0irIgARJgcIE9NhFTmntxSsvhky00-lkvw)
+[^5]: [Guidi, Lionel, et al. "Relationship between particle size distribution and flux in the mesopelagic zone." Deep Sea Research Part I: Oceanographic Research Papers 55.10 (2008): 1364-1374.](https://www.sciencedirect.com/science/article/pii/S0967063708001209?casa_token=8Y0s3iCkMuEAAAAA:rohwab6x5369QwvKy4JC8uF7hvGyyrCUxvyNxfxh0irIgARJgcIE9NhFTmntxSsvhky00-lkvw)
 
 
 ### Code
