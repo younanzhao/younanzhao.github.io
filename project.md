@@ -186,13 +186,29 @@ For temperature, salinity, silicate, oxygen, and nutrients, we will also conside
 
 (The model might involve optimizing some quantity. You can include snippets of code if it is helpful to explain things.)
 
+
+The algorithm applied in this project is based on Bagging Random Forest Regression, which is a combination of the Random Forest (RF) ensemble learning method and the Bagging (Bootstrap Aggregating) technique.
+
+RF is an ensemble of decision trees, where each tree is trained on a different random subset of the data, and predictions are made by averaging the predictions of all the tress. Then main idea is that combining multiple models (trees) improves generalization by reducing overfitting. Bagging is a technique where each tree is trained on a random subset of the data. These subsets are created by bootstrapping, i.e. sampling with replacement from the original dataset. Some data points are included multiple times, while others are left out. The key concept is that the data points left out in each subset can be used to estimate the model's generalization error, i.e. how well it might perform on unseen data.
+
+One of the key features of Bagging RF is the ability to evaluate the model using in-bag and **out-of-bag (OOB)** predictions. In-bag predictions are predictions made on the same data points that were used to train each individual decision tree, i.e. the data points that were sampled in the bootstrapped subset. Each tree is trained on a different subset of the data, leaving out about one-third of the data. The data points that were left out in each bootstrapped sample are used to make OOB predictions, effectively serving as a validation set. This is especially useful for assessing model performance without needing a separate validation dataset.
+
+For both the in-bag and out-of-bag predictions, the **$R^2$** and **RMSE** metrics are calculated using the r2rmse() function.
+
+
+
+
+
+
+
+
+
 ```python
 from sklearn.ensemble import RandomForestRegressor
 
 # RandomForestRegressor
 
 model = RandomForestRegressor(random_state=0, oob_score=True)
-
 
 pred_bv = []
 pred_sp = []
