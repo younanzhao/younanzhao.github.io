@@ -335,7 +335,7 @@ In this project, I used bagging random forest algorithm to reconstruct the PSDs 
 
 Future work could focus on several aspects:
 
-* Exploring Key Predictors: I would further do research into the main predictors and decide which predictors are the most important factors that affect particle size distributions. For example, since the data is monthly mean data, we can further look at the seasonal change of the reconstructed data, and therefore to see if the importance of the temperature predictor.
+* Exploring Key Predictors: I would further do research into the main predictors and decide which predictors are the most important factors that affect particle size distributions. For example, since the data is monthly mean data, we can further look at the seasonal change of the reconstructed data, and therefore to test the importance of the temperature predictor.
 
 * Regional Analysis: it would be greatly helpful to look at the data of different regions. By dividing the data into South or North Indian Ocean, South or North Tropical Pacific, South or North Tropical Atlantic, and so on, will help better understand different particle features in different regions. From this, we can potentially tell the features like nutrients, carbon flux and so on in different regions as well.
 
