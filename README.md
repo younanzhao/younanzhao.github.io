@@ -1,8 +1,6 @@
 ## Global reconstructions of particle size distribution from UVP5 observations using bagging random forest algorithm
 
-I applied machine learning techniques to investigate global particle size distributions (PSDs) data. Briefly, I reconstructed the BioVolume and Slope data by applying a bagged Random Forest (RF) algorithm to a global data set of UVP5 (Underwater Vision Profiler) observations.
-
-Below is my report.
+I applied machine learning techniques to investigate global particle size distributions (PSDs) data. Briefly, I reconstructed the BioVolume and Slope data by applying a bagged Random Forest (RF) algorithm to a global data set of UVP5 (Underwater Vision Profiler) observations. Below is my report.
 
 ***
 
@@ -20,7 +18,7 @@ I concluded that ...
 
 ## Data
 
-The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The UVP instrument captures images of particles within a control volume as it is lowered in the water column, providing counts of particles with sizes ranging from different diameters. The UVP quantifies the abundance of particulate matter into size classes (bins), allowing to determine PSD as a function of depth.
+The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The data set consists of over 6,700 profiles from 119 cruises, collected from 2008 to 2020. The UVP instrument captures images of particles within a control volume as it is lowered in the water column, providing counts of particles with sizes ranging from different diameters. The UVP quantifies the abundance of particulate matter into size classes (bins), allowing to determine PSD as a function of depth.
 
 <img src="assets/IMG/UVP5.png" width=40%>
 
@@ -202,7 +200,6 @@ One of the key features of Bagging RF is the ability to evaluate the model using
 
 For both the in-bag and out-of-bag predictions, the $$R^2$$ and RMSE metrics are calculated using the r2rmse() function.
 
-
 ```python
 from sklearn.ensemble import RandomForestRegressor
 
@@ -278,8 +275,6 @@ pred_bv *= tp_msk
 pred_sp *= tp_msk
 ```
 
-(This is how the method was developed.)
-
 ## Results
 
 The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as follows:
@@ -293,11 +288,13 @@ The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as fo
 
 *Figure 5: The reconstructed Slope data. It is unitless.*
 
+Figure 4 and 5 show the global reconstructions of PSD BV and slope. The reconstruction method is able to capture most of the variability of the UVP5 observations, and robustly reproduce the gridded measurements, with global average values of 0.34 ppm for BV (r2 = 0.99) and 3.8 for slope (r2 = 0.97) when considering the entire data set.
+
+The reconstructions of the PSD for the time frame 2008 to 2020, reveal high BV in productive regions such as high latitudes, coastal waters, and upwelling systems, and low BV in the oligotrophic subtropical gyres. PSD slopes show a nearly opposite pattern, with smaller slopes (i.e., “flatter” PSD) in more productive regions, and larger slopes in oligotrophic waters.
+
 ## Discussion
 
 In section "Modeling", it is discussed that the benefit of bagging random forest algorithm is that we can use the left-out data points in each bootstrapped sample to make OOB predictions. The OOB predictions can effectively serve as a validation set, so we can assess model performance without needing a separate validation dataset.
-
-(From Figure X, one can see that... [interpretation of Figure X].)
 
 <img src="assets/IMG/plot5.png" width=50%>
 
@@ -315,6 +312,7 @@ In section "Modeling", it is discussed that the benefit of bagging random forest
 
 *Figure 9: Same as figure 8,but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
 
+As shown in Figure 7 and 9, these OOB observations are also robustly predicted, with a r2 of 0.93 for BV and 0.81 for slope.
 
 ## Conclusion
 
@@ -324,24 +322,26 @@ In section "Modeling", it is discussed that the benefit of bagging random forest
 
 (Here is how this work could be developed further in a future project.)
 
-In future projects, there are three possible research topics of work that can be developed:
+In future projects, there are several possible research topics of work that can be developed:
 
 First, I would further do research into the main predictors and decide which predictors are the most important factors that affect particle size distributions. 
 
 Second, it would be greatly helpful to look at the data of different regions. By dividing the data into South or North Indian Ocean, South or North Tropical Pacific, South or North Tropical Atlantic, and so on, will help better understand different particle features in different regions. From this, we can potentially tell the features like nutrients, carbon flux and so on in different regions as well.
 
-Third, since our data is monthly mean data, we can further look at the seasonal change of the reconstructed data.
+Third, since the data is monthly mean data, we can further look at the seasonal change of the reconstructed data.
+
+Fourth, I mainly focus on the euphotic zone and mixed layer depth data. In the future, I will look deeper into mesopelagic zone and other deeper regions.
 
 ## References
-[1] Clements, D. J. et al. Constraining the Particle Size Distribution of Large Marine Particles in the Global Ocean With In Situ Optical Observations and Supervised Learning. Glob. Biogeochem. Cycles 36, e2021GB007276 (2022).
+[1] Clements, D. J., et al. "Constraining the particle size distribution of large marine particles in the global ocean with in situ optical observations and supervised learning." Global Biogeochemical Cycles 36.5 (2022): e2021GB007276.
 
-[2] Clements, D. J. et al. New Estimate of Organic Carbon Export From Optical Measurements Reveals the Role of Particle Size Distribution and Export Horizon. Glob. Biogeochem. Cycles 37, e2022GB007633 (2023).
+[2] Clements, D. J., et al. "New estimate of organic carbon export from optical measurements reveals the role of particle size distribution and export horizon." Global Biogeochemical Cycles 37.3 (2023): e2022GB007633.
 
-[3] Kiko, R. et al. A global marine particle size distribution dataset obtained with the Underwater Vision Profiler 5. Earth Syst. Sci. Data 14, 4315–4337 (2022).
+[3] Picheral, Marc, et al. "The Underwater Vision Profiler 5: An advanced instrument for high spatial resolution studies of particle size spectra and zooplankton." Limnology and Oceanography: Methods 8.9 (2010): 462-473.
 
-[4] 
+[4] Kiko, Rainer, et al. "A global marine particle size distribution dataset obtained with the Underwater Vision Profiler 5." Earth System Science Data Discussions 2022 (2022): 1-37.
 
-
+[5] Guidi, Lionel, et al. "Relationship between particle size distribution and flux in the mesopelagic zone." Deep Sea Research Part I: Oceanographic Research Papers 55.10 (2008): 1364-1374.
 
 
 ### Code
