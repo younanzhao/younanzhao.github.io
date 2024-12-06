@@ -334,8 +334,11 @@ Third, since our data is monthly mean data, we can further look at the seasonal 
 
 ## References
 [1] Clements, D. J. et al. Constraining the Particle Size Distribution of Large Marine Particles in the Global Ocean With In Situ Optical Observations and Supervised Learning. Glob. Biogeochem. Cycles 36, e2021GB007276 (2022).
+
 [2] Clements, D. J. et al. New Estimate of Organic Carbon Export From Optical Measurements Reveals the Role of Particle Size Distribution and Export Horizon. Glob. Biogeochem. Cycles 37, e2022GB007633 (2023).
+
 [3] Kiko, R. et al. A global marine particle size distribution dataset obtained with the Underwater Vision Profiler 5. Earth Syst. Sci. Data 14, 4315–4337 (2022).
+
 [4] 
 
 
