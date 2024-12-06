@@ -23,9 +23,11 @@ I concluded that ...
 The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The UVP instrument captures images of particles within a control volume as it is lowered in the water column, providing counts of particles with sizes ranging from different diameters. The UVP quantifies the abundance of particulate matter into size classes (bins), allowing to determine PSD as a function of depth.
 
 ![](assets/IMG/UVP5.png)
+*Figure 1: Images of plankton collected by UVP5 (Kiko and Schröder, 2020)*
 
 PSD is modeled as:
-$$ n(s) = n_0 \times s^{-\beta}$$
+
+$$ n(s) = n_0 \times s^{-\beta} $$
 
 where s is the equivalent spherical diameter or size of the particle (in units of 𝜇m), and n(s) is the abundance of particles (units of m-3 𝜇m-1) in a vanishingly small size interval [s, s + ds]. $$n_0$$ is the intercepth and $$\beta$$ is the slope. So Biovolume is given by:
 
