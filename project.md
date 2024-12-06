@@ -22,7 +22,7 @@ I concluded that ...
 
 (Here is an overview of the dataset, how it was obtained and the preprocessing steps taken, with some plots!)
 
-The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The data is binned on a regular 1° resolution global grid. Taking 200m depth (which is usually considered as a threshold for mixed layer or euphotic layer) as an example, the plots of seasonal mean of the original data are as follows: 
+The original BioVolume and Slope data are from EcoPart, where the data are collecting by UVP5 from different cruises. The data is binned on a regular 1° resolution global grid. Taking 100m depth (which is usually considered as a threshold for mixed layer or euphotic layer) as an example, the plots of seasonal mean of the original data are as follows: 
 
 ![](assets/IMG/plot1.png)
 
@@ -262,7 +262,7 @@ pred_sp *= tp_msk
 
 ## Results
 
-The reconstructed seasonal mean BioVolume and Slope data at 200m depth are as follows:
+The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as follows:
 (Figure X shows... [description of Figure X].)
 
 ![](assets/IMG/plot3.png)
