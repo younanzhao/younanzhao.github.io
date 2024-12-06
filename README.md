@@ -39,11 +39,11 @@ PSD is modeled as:
 
 $$ n(s) = n_0 \times s^{-\beta}$$
 
-where s is the equivalent spherical diameter or size of the particle (in units of 𝜇m), and n(s) is the abundance of particles (units of $m^{-3} \mu m^{-1}$) in a vanishingly small size interval [s, s + ds]. $n_0$ is the intercepth and $\beta$ is the slope. So Biovolume is given by:
+where s is the equivalent spherical diameter or size of the particle (in units of $\mu m$), and n(s) is the abundance of particles (units of $m^{-3} \mu m^{-1}$) in a vanishingly small size interval [s, s + ds]. $n_0$ is the intercepth and $\beta$ is the slope. So Biovolume is given by:
 
 $$ BV = \int_{s_{min}}^{s_{max}} n(s) \cdot \frac{\pi}{6} \cdot s^3 ds = \frac{\pi}{6} \cdot n_0 \cdot(\frac{s_{max}^{4-\beta}}{4-\beta} - \frac{s_{min}^{4-\beta}}{4-\beta}) $$
 
-Set $s_{min}$ = 105 μm to avoid a potential slight instrument bias in the lowest size classes; set $s_{max} = 5 mm$, which corresponds to the size where zooplankton start to dominate the BV at a variety of locations sampled by UVP5.
+Set $s_{min} = 105 \mu m$ to avoid a potential slight instrument bias in the lowest size classes; set $s_{max} = 5 mm$, which corresponds to the size where zooplankton start to dominate the BV at a variety of locations sampled by UVP5.
 
 Therefore, with the Biovolume data and the slope data, we would be able to determine the intercept, thus revealing the particle distributions in the global ocean, and therefore do further research.
 
