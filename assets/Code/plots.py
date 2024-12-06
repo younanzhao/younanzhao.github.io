@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Dec  5 20:14:32 2024
-
-@author: zhaoyanchu
-"""
-
 import h5py
 import numpy as np
 from netCDF4 import Dataset,num2date
@@ -17,10 +9,10 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 plt.rcParams['font.family'] = 'DejaVu Sans'
 
-pred_bv = np.load('/Users/zhaoyanchu/Documents/MATLAB/Scripts_for_Publish/pred_bv_data.npy',allow_pickle=True)
-pred_sp = np.load('/Users/zhaoyanchu/Documents/MATLAB/Scripts_for_Publish/pred_sp_data.npy',allow_pickle=True)
+pred_bv = np.load('./pred_bv_data.npy',allow_pickle=True)
+pred_sp = np.load('./pred_sp_data.npy',allow_pickle=True)
 
-file_path_POC = '/Users/zhaoyanchu/Documents/MATLAB/Scripts_for_Publish/POC_UVP5_onWOAgrid.mat'
+file_path_POC = './POC_UVP5_onWOAgrid.mat'
 file_POC = h5py.File(file_path_POC)
 
 POC = file_POC['poc']
