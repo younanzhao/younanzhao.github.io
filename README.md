@@ -22,6 +22,7 @@ The original BioVolume and Slope data are from EcoPart, where the data are colle
 
 <img src="assets/IMG/UVP5.png" width=40%>
 ![](assets/IMG/UVP5.png)
+
 *Figure 1: Images of plankton collected by UVP5 (Kiko and Schröder, 2020)*
 
 PSD is modeled as:
