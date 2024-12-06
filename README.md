@@ -36,11 +36,11 @@ Therefore, with the Biovolume data and the slope data, we would be able to deter
 
 The PSDs data is binned on a regular 1° resolution global grid. Taking 100m depth (which is usually considered as a threshold for mixed layer or euphotic layer) as an example, the plots of seasonal mean of the original data are as follows: 
 
-<img src="assets/IMG/plot1.png" width=70%>
+![](assets/IMG/plot1.png)
 
 *Figure 2: The original BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm.*
 
-<img src="assets/IMG/plot2.png" width=70%>
+![](assets/IMG/plot2.png)
 
 *Figure 3: The original Slope data. It is unitless.*
 
@@ -280,11 +280,11 @@ pred_sp *= tp_msk
 The reconstructed seasonal mean BioVolume and Slope data at 100m depth are as follows:
 (Figure X shows... [description of Figure X].)
 
-<img src="assets/IMG/plot3.png" width=70% />
+![](assets/IMG/plot3.png)
 
 *Figure 4: The reconstructed BioVolume data. The data was preprocessed using log10, so -1 on the plot means a biovolume of 0.1 ppm, and 1 on the plot means a biovolume of 10 ppm. The scattered dots are orginal biovolume data.*
 
-<img src="assets/IMG/plot4.png" width=70%>
+![](assets/IMG/plot4.png)
 
 *Figure 5: The reconstructed Slope data. It is unitless. The scattered dots are orginal slope data.*
 
@@ -296,19 +296,19 @@ The reconstructions of the PSD for the time frame 2008 to 2020, reveal high BV i
 
 In section "Modeling", it is discussed that the benefit of bagging random forest algorithm is that we can use the left-out data points in each bootstrapped sample to make OOB predictions. The OOB predictions can effectively serve as a validation set, so we can assess model performance without needing a separate validation dataset.
 
-<img src="assets/IMG/plot5.png" width=50%>
+![](assets/IMG/plot5.png)
 
 *Figure 6: Performance of the Random Forest reconstruction shown as density scatter plots of predicted versus observed BV (colors indicate the normalized density of observations at each point).*
 
-<img src="assets/IMG/plot6.png" width=50%>
+![](assets/IMG/plot6.png)
 
 *Figure 7: Same as figure 6, but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
 
-<img src="assets/IMG/plot7.png" width=50%>
+![](assets/IMG/plot7.png)
 
 *Figure 8: Performance of the Random Forest reconstruction shown as density scatter plots of predicted versus observed particulate slope (colors indicate the normalized density of observations at each point).*
 
-<img src="assets/IMG/plot8.png" width=50%>
+![](assets/IMG/plot8.png)
 
 *Figure 9: Same as figure 8,but using out-of-bag (OOB) predictions, that is, predictions versus observations withheld from training.*
 
